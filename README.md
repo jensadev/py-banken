@@ -32,3 +32,4 @@ Extra
 
 * Skapa bankkonto, user osv.
 * Spara saldo mellan programkörningar.
+* https://docs.python.org/3.3/tutorial/inputoutput.html#reading-and-writing-files

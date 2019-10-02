@@ -5,7 +5,16 @@ userPin = int(input("Skriv in din pinkod: "))
 if pin != userPin:
     exit()
 
-balance = 0.0
+try:
+    with open("balance.txt", "r")as balanceFile:
+        try:
+            balance = balanceFile.readline()
+            balance = float(balance)
+        except (ValueError):
+            print("File corrupt")
+            balance = 0.0
+except (FileNotFoundError):
+    balance = 0.0
 menu = 0
 # menu 1 insättning
 # menu 2 uttag
@@ -19,3 +28,8 @@ while menu != 3:
         print("uttag")
     else:
         print("Fel eller avslut")
+        try:
+            with open("balance.txt", "w")as balanceFile:
+                balanceFile.write(str(balance))
+        except (FileNotFoundError):
+            print("Ingen fil")
